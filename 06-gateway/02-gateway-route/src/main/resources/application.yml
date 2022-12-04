@@ -1,0 +1,29 @@
+server:
+  port: 80
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: login-service-route
+          uri: http://localhost:8081
+#          uri: lb://login-service
+          predicates:
+            - Path=/login
+          filters:
+            - name: RequestRateLimiter
+              args:
+#                   key-resolver: '#{@hostAddrKeyResolver}'
+#                   redis-rate-limiter.replenishRate: 1
+#                   redis-rate-limiter.burstCapacity: 3
+
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#eureka:
+#  client:
+#    service-url:
+#      defalutZone: http://localhost/eureka

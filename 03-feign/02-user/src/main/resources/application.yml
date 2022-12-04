@@ -1,0 +1,13 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: user-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:8761/eureka
+ribbon:
+  ReadTimeout: 1000
+#  ConnectTimeout:毫秒时间 ， 同feign的
+
